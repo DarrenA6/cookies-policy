@@ -1,0 +1,22 @@
+{% extends "layout.html" %} {% block page_title %} Member test {% endblock %} {% block head %} {% include "includes/head.html" %} {% include "includes/scripts.html" %} {% endblock %} {% import "templates/button.html" as button %} {% block content %}
+<main id="content" role="main">
+    <div class="grid-row">
+        <div class="column-two-thirds">
+            {% include "includes/phase_banner_beta.html" %} {% include "includes/buttons/back.html" %}
+            <h1 class="heading-large">member test</h1>
+
+            <div class="form-group">
+                <label class="form-label" for="full-name-f1">Registration number</label>
+                <input class="form-control" id="full-name-f1" type="text">
+            </div>
+            <div class="form-group">
+                <input class="button" type="submit" value="Save and continue">
+            </div>
+        </div>
+    </div>
+
+
+
+</main>
+
+{% endblock %}

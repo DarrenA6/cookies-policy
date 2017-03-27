@@ -1,0 +1,36 @@
+{% extends "layout.html" %} {% block page_title %} Return to service {% endblock %} {% block head %} {% include "includes/head.html" %} {% include "includes/scripts.html" %} {% endblock %} {% import "templates/button.html" as button %} {% block content %}
+<main id="content" role="main">
+    <div class="grid-row">
+        <div class="column-two-thirds">
+            {% include "includes/phase_banner_beta.html" %} {% include "includes/buttons/back.html" %}
+            <h1 class="heading-large">Return to service</h1>
+
+            <p> This would then take you back to the page you originally came from in the service </p>
+
+        </div>
+    </div>
+                         <div class="margin-top-4">
+                  
+
+                   
+                    {{ button.input(id='continue', name='continue', class='button', type='button', value='Exit') }}
+
+
+  </div>
+    
+     
+    <!--  end gridrow  -->
+</main>
+  
+<script type="text/javascript">
+    $(".button").click(function () {
+        // Enter function name here
+        validate();
+    });
+
+    function validate() {
+        go('/index');
+    }
+</script>
+
+{% endblock %}

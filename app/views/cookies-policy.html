@@ -1,0 +1,76 @@
+<main id="content" role="main">
+    <div class="grid-row">
+        <div class="column-two-thirds">
+            {% include "includes/phase_banner_beta.html" %} {% include "includes/buttons/back.html" %}
+            <h1 class="heading-large">IBM Digital Analytics policy</h1>
+
+            <p> IBM allows you to view or change the way they collect data about your user experience on this site. There are three different levels of data collection. </p>
+
+
+            <h2 class="heading-large">Your current level</h2>
+            <div class="panel panel-border-wide">
+                <p>
+                    Use a cookie on my device to collect data about my experience. This data may be used to produce a report on an <strong>individual</strong> anonymous visitor.
+                </p>
+            </div>
+            <br>
+            <div>
+                <p> To update the level of data that is collected about you, select one of the following options: </p>
+            </div>
+            <form class="form">
+                <div class="form-group" id="level">
+                    <span class="error-message">
+                        Select an option
+                    </span>
+                    <fieldset>
+                        <legend class="visuallyhidden"> Update your data collection level </legend>
+
+                        <label class="block-label selection-button-radio" for="radio-1">
+                            <input id="radio-1" type="radio" name="radio-group" value="individual"> Use a cookie on my device to collect data about my experience. This data may be used to produce a report on an <strong>individual</strong> anonymous visitor.
+                        </label>
+                        <label class="block-label selection-button-radio" for="radio-2">
+                            <input id="radio-2" type="radio" name="radio-group" value="group"> Use a cookie on my device to collect data about my experience. This data may only be used to produce a report on a <strong>group</strong> of anonymous visitors.
+                        </label>
+                        <label class="block-label selection-button-radio" for="radio-3">
+                            <input id="radio-3" type="radio" name="radio-group" value="dont"> Do not collect data about my experience.
+                        </label>
+
+
+                    </fieldset>
+                    <br>
+                    <br>
+
+                </div>
+            </form>
+
+
+            {{ button.input(id='continue', name='continue', class='button', type='button', value='Continue') }}
+        </div>
+    </div>
+
+</main>
+<script type="text/javascript">
+    $(".button").click(function () {
+        // Enter function name here
+        validate();
+    });
+
+    function validate() {
+        var question = "Update your data collection level";
+        var value = $('input[name=radio-group]:checked').val();
+
+        if (value == 'individual') {
+            go('/return');
+
+        } else if (value == 'group') {
+            go('/return');
+
+        } else if (value == 'dont') {
+            go('/return');
+        } else {
+            $('#level').addClass('error');
+            $('.error-message').show();
+        }
+    }
+</script>
+{% endblock %}

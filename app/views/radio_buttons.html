@@ -1,0 +1,76 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+What would you like to do?
+{% endblock %}
+
+{% block head %}
+{% include "includes/head.html" %}
+{% include "includes/scripts.html" %}
+{% endblock %}
+
+{% import "templates/button.html" as button %}
+
+{% block content %}
+
+<main id="content" role="main">
+    {% include "includes/phase_banner_beta.html" %}
+    <div class="grid-row" id="pr3">
+        <div class="column-two-thirds">
+
+            <h1 class="heading-large"> What would you like to do? </h1>
+
+            <form class="form">
+                <div class="form-group" id="question">
+                    <span class="error-message">
+                        Select an option
+                    </span>
+                    <fieldset>
+                        <legend class="visuallyhidden"> What would you like to do? </legend>
+
+                        <label class="block-label" for="menu-a1" id="menu-a1-label">
+                            <input id="menu-a1" type="radio" name="menu" value="Create an order">
+                            Start a grant application
+                        </label>
+                        <label class="block-label" for="menu-a2" id="menu-a2-label">
+                            <input id="menu-a2" type="radio" name="menu" value="Continue an unfinished grant application">
+                            Continue an unfinished grant application
+                        </label>
+                        <label class="block-label" for="menu-a3" id="menu-a3-label">
+                            <input id="menu-a3" type="radio" name="menu" value="View the order summary">
+                            View the order summary
+                        </label>
+                    </fieldset>
+                </div><!--  end .form-group  -->
+                {{ button.input(id='continue', name='continue', class='button', type='button', value='Continue') }}
+            </form>
+        </div>
+    </div>
+</main>
+
+<script type="text/javascript">
+    $(".button").click(function(){
+        // Enter function name here
+        validate();
+    });
+
+    function validate() {
+        var question = "What would you like to do?";
+        var value = $('input[name=menu]:checked').val();
+
+        if (value == 'Create an order') {
+            go('/olev/purchaser');
+
+        } else if (value == 'Continue an unfinished grant application') {
+            go('/olev/search-or-select-grant');
+
+        } else if (value == 'View the order summary') {
+            go('#');
+        } else {
+            $('#question').addClass('error');
+            $('.error-message').show();
+        }
+    }
+</script>
+
+{% endblock %}
